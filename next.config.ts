@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
   output: "export",
   basePath: isGithubPages ? `/${REPO_NAME}` : "",
   assetPrefix: isGithubPages ? `/${REPO_NAME}/` : "",
+  env: {
+    // 讓網站本地圖片路徑（如 /images/...）在 GitHub Pages 上也能正確加上 /REPO_NAME 前綴
+    NEXT_PUBLIC_BASE_PATH: isGithubPages ? `/${REPO_NAME}` : "",
+  },
   images: {
     unoptimized: true,
     remotePatterns: [

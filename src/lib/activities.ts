@@ -1,6 +1,8 @@
 // 此檔案模擬未來由 Google 表單/Sheet 同步而來的活動資料結構（見 PRD 8.2）
 // 正式上線後可改為 fetch 已發布為 CSV 的 Google Sheet 並解析為相同結構
 
+import { withBasePath } from "./base-path";
+
 export type ActivityCategory = "elder" | "community" | "festival" | "education";
 
 export interface Activity {
@@ -33,10 +35,12 @@ export const activities: Activity[] = [
       "（佔位內容）活動當天邀請多位社區長輩示範傳統包粽手法，並由青年志工協助準備食材與場地，活動結束後共同享用成果，凝聚社區情感。",
     content_en:
       "(Placeholder) Local elders demonstrated traditional dumpling-wrapping techniques while youth volunteers helped prepare ingredients and the venue. Everyone enjoyed the results together afterward.",
-    cover_image: "https://picsum.photos/seed/cunren-a001/800/600",
+    cover_image: withBasePath("/images/activities/a001-cover.jpg"),
     gallery_images: [
-      "https://picsum.photos/seed/cunren-a001-2/800/600",
-      "https://picsum.photos/seed/cunren-a001-3/800/600",
+      withBasePath("/images/activities/a001-1.jpg"),
+      withBasePath("/images/activities/a001-2.jpg"),
+      withBasePath("/images/activities/a001-3.jpg"),
+      withBasePath("/images/activities/a001-4.jpg"),
     ],
   },
   {

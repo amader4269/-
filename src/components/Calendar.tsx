@@ -30,49 +30,52 @@ export default function Calendar() {
   return (
     <section className="mx-auto max-w-5xl px-4 py-8">
       <h2 className="text-2xl font-bold text-ink mb-4">{t.home.calendarTitle}</h2>
-      <p className="text-lg font-semibold text-primary-dark mb-3">
-        {year}{locale === "zh" ? "年" : "-"}
-        {locale === "zh" ? `${month}月` : String(month).padStart(2, "0")}
-      </p>
 
-      <div className="rounded-2xl bg-white shadow p-3 sm:p-4">
-        <div className="grid grid-cols-7 gap-1 sm:gap-2 text-center">
-          {t.home.weekdays.map((w) => (
-            <div key={w} className="text-sm sm:text-base font-bold text-ink/60 py-1">
-              {w}
-            </div>
-          ))}
-          {cells.map((day, i) => {
-            const dayEvents = day ? eventsByDay.get(day) : undefined;
-            return (
-              <div
-                key={i}
-                className={`min-h-16 sm:min-h-20 rounded-lg p-1 flex flex-col items-center text-center ${
-                  dayEvents
-                    ? "bg-primary/10 border-2 border-primary"
-                    : day
-                      ? "bg-cream"
-                      : ""
-                }`}
-              >
-                {day && (
-                  <>
-                    <span className="text-sm sm:text-base font-semibold text-ink">
-                      {day}
-                    </span>
-                    {dayEvents?.map((event, idx) => (
-                      <span
-                        key={idx}
-                        className="text-xs sm:text-sm leading-tight font-bold text-primary-dark mt-1"
-                      >
-                        {locale === "zh" ? event.title_zh : event.title_en}
-                      </span>
-                    ))}
-                  </>
-                )}
+      <div className="max-w-[33%] min-w-[220px]">
+        <p className="text-sm font-semibold text-primary-dark mb-2">
+          {year}{locale === "zh" ? "年" : "-"}
+          {locale === "zh" ? `${month}月` : String(month).padStart(2, "0")}
+        </p>
+
+        <div className="rounded-xl bg-white shadow p-1.5">
+          <div className="grid grid-cols-7 gap-0.5 text-center">
+            {t.home.weekdays.map((w) => (
+              <div key={w} className="text-[10px] font-bold text-ink/60 py-0.5">
+                {w}
               </div>
-            );
-          })}
+            ))}
+            {cells.map((day, i) => {
+              const dayEvents = day ? eventsByDay.get(day) : undefined;
+              return (
+                <div
+                  key={i}
+                  className={`min-h-6 rounded p-0.5 flex flex-col items-center justify-center text-center ${
+                    dayEvents
+                      ? "bg-primary/10 border border-primary"
+                      : day
+                        ? "bg-cream"
+                        : ""
+                  }`}
+                >
+                  {day && (
+                    <>
+                      <span className="text-[10px] font-semibold text-ink leading-none">
+                        {day}
+                      </span>
+                      {dayEvents?.map((event, idx) => (
+                        <span
+                          key={idx}
+                          className="text-[8px] leading-tight font-bold text-primary-dark"
+                        >
+                          {locale === "zh" ? event.title_zh : event.title_en}
+                        </span>
+                      ))}
+                    </>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
