@@ -1,26 +1,45 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fff8f0;
+  --foreground: #2d2a26;
+
+  /* 溫馨在地色彩 */
+  --color-primary: #e8743b; /* 暖橙：主要 CTA */
+  --color-primary-dark: #c85a28;
+  --color-secondary: #6b8e5a; /* 木質綠：輔助色 */
+  --color-secondary-dark: #51703f;
+  --color-cream: #fff8f0; /* 米白底色 */
+  --color-ink: #2d2a26; /* 主要文字，高對比 */
+  --color-line: #06c755; /* LINE 品牌綠 */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-dark: var(--color-secondary-dark);
+  --color-cream: var(--color-cream);
+  --color-ink: var(--color-ink);
+  --color-line: var(--color-line);
+  --font-sans: var(--font-noto-sans-tc);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  /* 長輩友善：將基礎字級從 16px 提升到 18px，全站 rem 單位隨之放大 */
+  font-size: 112.5%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, "Microsoft JhengHei", Helvetica, sans-serif;
+}
+
+/* 長輩友善：避免 hover-only 互動，確保可點擊區域夠大 */
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
 }
